@@ -18,7 +18,7 @@ class ExpiringToken(Token):
         proxy = True
 
     def expired(self):
-        """Return boolean inidcating token expiration."""
+        """Return boolean indicating token expiration."""
         now = timezone.now()
         if self.created < now - settings.EXPIRING_TOKEN_LIFESPAN:
             return True
