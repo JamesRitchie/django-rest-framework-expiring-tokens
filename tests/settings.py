@@ -1,3 +1,5 @@
+from datetime import timedelta
+
 SECRET_KEY = 'fake-key'
 
 MIDDLEWARE_CLASSES = [
@@ -29,3 +31,5 @@ DATABASES = {
 }
 
 ROOT_URLCONF = 'tests.urls'
+
+EXPIRING_TOKEN_LIFESPAN = timedelta(days=30)
