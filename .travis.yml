@@ -17,12 +17,12 @@ matrix:
     - python: "2.6"
       env: DJANGO_VERSION=1.8c1
     - python: "3.2"
-      env: DJANGO_VERSION=1.4.19
+      env: DJANGO_VERSION=1.4.20
     - python: "3.3"
-      env: DJANGO_VERSION=1.4.19
+      env: DJANGO_VERSION=1.4.20
     - python: "3.4"
-      env: DJANGO_VERSION=1.4.19
-    fast_finish: true
+      env: DJANGO_VERSION=1.4.20
+  fast_finish: true
 
 install:
   - pip install Django==$DJANGO_VERSION djangorestframework==3.0.5
