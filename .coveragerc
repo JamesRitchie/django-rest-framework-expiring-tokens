@@ -1,0 +1,3 @@
+[run]
+source = rest_framework_expiring_authtoken
+omit = rest_framework_expiring_authtoken/migrations/*
