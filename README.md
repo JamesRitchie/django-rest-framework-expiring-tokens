@@ -4,9 +4,10 @@
 [![Coverage Status](https://coveralls.io/repos/JamesRitchie/django-rest-framework-expiring-tokens/badge.svg)](https://coveralls.io/r/JamesRitchie/django-rest-framework-expiring-tokens)
 [![Code Health](https://landscape.io/github/JamesRitchie/django-rest-framework-expiring-tokens/master/landscape.svg?style=flat)](https://landscape.io/github/JamesRitchie/django-rest-framework-expiring-tokens/master)
 
-This package provides a lightweight extension to the included Token
-authentication in Django Rest Framework, causing tokens to expire after
-a specified duration.
+This package provides a lightweight extension to the included token
+authentication in
+[Django Rest Framework](http://www.django-rest-framework.org/), causing tokens
+to expire after a specified duration.
 
 This behaviour is good practice when using token authentication for production
 APIs.
