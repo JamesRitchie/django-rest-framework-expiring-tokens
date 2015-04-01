@@ -18,7 +18,7 @@ matrix:
   fast_finish: true
 
 install:
-  - pip install Django==$DJANGO_VERSION djangorestframework==3.0.5
+  - pip install Django==$DJANGO_VERSION djangorestframework==3.1.1
   - pip install coveralls
 script:
   coverage run runtests.py
