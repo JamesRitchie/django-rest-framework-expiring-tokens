@@ -22,7 +22,7 @@ class ObtainExpiringAuthToken(ObtainAuthToken):
         serializer = AuthTokenSerializer(data=request.DATA)
 
         if serializer.is_valid():
-            token, created = ExpiringToken.objects.get_or_create(
+            token, _ = ExpiringToken.objects.get_or_create(
                 user=serializer.validated_data['user']
             )
 

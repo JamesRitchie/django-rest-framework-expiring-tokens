@@ -14,7 +14,7 @@ class ExpiringToken(Token):
 
     """Extend Token to add an expired method."""
 
-    class Meta:
+    class Meta(object):
         proxy = True
 
     def expired(self):
