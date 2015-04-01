@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/JamesRitchie/django-rest-framework-expiring-tokens.svg?branch=master)](https://travis-ci.org/JamesRitchie/django-rest-framework-expiring-tokens)
 [![Coverage Status](https://coveralls.io/repos/JamesRitchie/django-rest-framework-expiring-tokens/badge.svg)](https://coveralls.io/r/JamesRitchie/django-rest-framework-expiring-tokens)
 [![Code Health](https://landscape.io/github/JamesRitchie/django-rest-framework-expiring-tokens/master/landscape.svg?style=flat)](https://landscape.io/github/JamesRitchie/django-rest-framework-expiring-tokens/master)
+[![PyPI version](https://badge.fury.io/py/djangorestframework-expiring-authtoken.svg)](http://badge.fury.io/py/djangorestframework-expiring-authtoken)
 
 This package provides a lightweight extension to the included token
 authentication in
@@ -20,10 +21,14 @@ This package was inspired by this
 
 ## Installation
 
+Expiring Tokens is tested against the latest versions of Django 1.6, 1.7 and
+the 1.8 preview release, and Django Rest Framework 3.1.1.
+It should in theory support Django 1.4.
+
 Grab the package from PyPI.
 
 ```zsh
-pip install --pre djangorestframework-expiring-tokens
+pip install djangorestframework-expiring-authtoken
 ```
 
 As this package uses a proxy model on the original Token model, the first step
@@ -62,6 +67,14 @@ from rest_framework_expiring_authtoken import views
 urlpatterns += [
     url(r'^api-token-auth/', views.obtain_expiring_auth_token)
 ]
+```
+
+If using Django 1.7 or later, you'll need to run `migrate`, even though nothing
+is changed, as Django requires proxy models that inherit from models in an
+app with migrations to also have migrations.
+
+```zsh
+python manage.py migrate
 ```
 
 ## Usage
