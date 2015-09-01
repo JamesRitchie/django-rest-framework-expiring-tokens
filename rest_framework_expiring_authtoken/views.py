@@ -8,6 +8,7 @@ from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.response import Response
 from rest_framework.status import HTTP_400_BAD_REQUEST
 from rest_framework.authentication import BasicAuthentication
+from django.contrib.auth.models import AnonymousUser
 
 from rest_framework_expiring_authtoken.models import ExpiringToken
 
@@ -22,7 +23,7 @@ class ObtainExpiringAuthToken(ObtainAuthToken):
     def get(self, request):
         """Respond to GET username/password(Header - HTTP Basic Auth) with token."""
 
-        if request.user:
+        if request.user and not isinstance(request.user, AnonymousUser):
             token, _ = ExpiringToken.objects.get_or_create(
                 user=request.user
             )
