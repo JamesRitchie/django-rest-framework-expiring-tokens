@@ -19,7 +19,7 @@ class ObtainExpiringAuthToken(ObtainAuthToken):
 
     def post(self, request):
         """Respond to POSTed username/password with token."""
-        serializer = AuthTokenSerializer(data=request.DATA)
+        serializer = AuthTokenSerializer(data=request.data)
 
         if serializer.is_valid():
             token, _ = ExpiringToken.objects.get_or_create(
