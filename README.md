@@ -89,3 +89,10 @@ The `obtain_expiring_auth_token` view works exactly the same as the `obtain_auth
  * Variable token lifespans.
  * Possibly change `obtain_expiring_auth_token` to always replace an existing token. (Configurable?)
  * South Migrations
+
+## Changelog
+
+ * 0.1.2
+  * Changed from deprecated `request.DATA` to `request.data`
+ * 0.1.1
+  * Initial release
