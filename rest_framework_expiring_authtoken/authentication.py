@@ -30,7 +30,7 @@ class ExpiringTokenAuthentication(TokenAuthentication):
         if not token.user.is_active:
             raise exceptions.AuthenticationFailed('User inactive or deleted')
 
-        if token.expired():
+        if token.expiration_set() and token.expired():
             raise exceptions.AuthenticationFailed('Token has expired')
 
         return (token.user, token)

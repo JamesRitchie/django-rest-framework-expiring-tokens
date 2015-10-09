@@ -26,6 +26,10 @@ class ObtainExpiringAuthToken(ObtainAuthToken):
                 user=serializer.validated_data['user']
             )
 
+            if not token.expiration_set():
+                # If no EXPIRING_TOKEN_LIFESPAN is set in settings file, then skip checking if token is expired
+                return Response({'token': token.key})
+
             if token.expired():
                 # If the token is expired, generate a new one.
                 token.delete()
