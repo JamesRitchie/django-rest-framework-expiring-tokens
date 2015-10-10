@@ -4,6 +4,7 @@
 [![Coverage Status](https://coveralls.io/repos/JamesRitchie/django-rest-framework-expiring-tokens/badge.svg)](https://coveralls.io/r/JamesRitchie/django-rest-framework-expiring-tokens)
 [![Code Health](https://landscape.io/github/JamesRitchie/django-rest-framework-expiring-tokens/master/landscape.svg?style=flat)](https://landscape.io/github/JamesRitchie/django-rest-framework-expiring-tokens/master)
 [![PyPI version](https://badge.fury.io/py/djangorestframework-expiring-authtoken.svg)](http://badge.fury.io/py/djangorestframework-expiring-authtoken)
+[![Requirements Status](https://requires.io/github/JamesRitchie/django-rest-framework-expiring-tokens/requirements.svg?branch=master)](https://requires.io/github/JamesRitchie/django-rest-framework-expiring-tokens/requirements/?branch=master)
 
 This package provides a lightweight extension to the included token
 authentication in
