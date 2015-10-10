@@ -4,6 +4,7 @@
 [![Coverage Status](https://coveralls.io/repos/JamesRitchie/django-rest-framework-expiring-tokens/badge.svg)](https://coveralls.io/r/JamesRitchie/django-rest-framework-expiring-tokens)
 [![Code Health](https://landscape.io/github/JamesRitchie/django-rest-framework-expiring-tokens/master/landscape.svg?style=flat)](https://landscape.io/github/JamesRitchie/django-rest-framework-expiring-tokens/master)
 [![PyPI version](https://badge.fury.io/py/djangorestframework-expiring-authtoken.svg)](http://badge.fury.io/py/djangorestframework-expiring-authtoken)
+[![Requirements Status](https://requires.io/github/JamesRitchie/django-rest-framework-expiring-tokens/requirements.svg?branch=master)](https://requires.io/github/JamesRitchie/django-rest-framework-expiring-tokens/requirements/?branch=master)
 
 This package provides a lightweight extension to the included token
 authentication in
@@ -51,10 +52,11 @@ INSTALLED_APPS = [
 Specify the desired lifespan of a token with `EXPIRING_TOKEN_LIFESPAN` in
 `settings.py` using a
 [timedelta object](https://docs.python.org/2/library/datetime.html#timedelta-objects).
+If not set, the default is 30 days.
 
 ```python
 import datetime
-EXPIRING_TOKEN_LIFESPAN = datetime.timedelta(days=30)
+EXPIRING_TOKEN_LIFESPAN = datetime.timedelta(days=25)
 ```
 
 [Set the authentication scheme](http://www.django-rest-framework.org/api-guide/authentication/#setting-the-authentication-scheme) to `rest_framework_expiring_authtoken.authentication.ExpiringTokenAuthentication`
@@ -85,13 +87,15 @@ The `obtain_expiring_auth_token` view works exactly the same as the `obtain_auth
 
 ## Improvements
 
- * Potentially have a default setting for token lifespan.
  * Variable token lifespans.
  * Possibly change `obtain_expiring_auth_token` to always replace an existing token. (Configurable?)
  * South Migrations
 
 ## Changelog
 
+
+ * 0.1.3
+  * Set a default token lifespan of 30 days.
  * 0.1.2
   * Changed from deprecated `request.DATA` to `request.data`
  * 0.1.1
