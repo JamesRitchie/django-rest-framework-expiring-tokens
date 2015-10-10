@@ -31,5 +31,3 @@ DATABASES = {
 }
 
 ROOT_URLCONF = 'tests.urls'
-
-EXPIRING_TOKEN_LIFESPAN = timedelta(days=30)
