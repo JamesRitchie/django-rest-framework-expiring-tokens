@@ -19,6 +19,7 @@ matrix:
 
 install:
   - pip install Django==$DJANGO_VERSION djangorestframework==3.2.3
+  - pip install coverage==3.7.1
   - pip install coveralls
 script:
   coverage run runtests.py
