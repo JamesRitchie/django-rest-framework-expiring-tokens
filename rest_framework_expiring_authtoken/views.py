@@ -24,7 +24,7 @@ class ObtainExpiringAuthToken(ObtainAuthToken):
 
         if serializer.is_valid():
             token, _ = ExpiringToken.objects.get_or_create(
-                user=serializer.validated_data['user'],
+                user=serializer.validated_data['user']
             )
 
             if token.expired():
@@ -36,7 +36,6 @@ class ObtainExpiringAuthToken(ObtainAuthToken):
             else:
                 token.created = datetime.datetime.utcnow()
                 token.save()
-
             data = {'token': token.key}
             return Response(data)
 
