@@ -24,7 +24,7 @@ class ExpiringTokenAuthentication(TokenAuthentication):
         """Attempt token authentication using the provided key."""
         try:
             token = self.models.objects.get(key=key)
-        except self.model.DoesNotExist:
+        except self.models.DoesNotExist:
             raise exceptions.AuthenticationFailed('Invalid token')
 
         if not token.user.is_active:
