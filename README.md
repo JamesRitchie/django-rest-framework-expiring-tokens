@@ -91,6 +91,11 @@ The `obtain_expiring_auth_token` view works exactly the same as the `obtain_auth
  * Possibly change `obtain_expiring_auth_token` to always replace an existing token. (Configurable?)
  * South Migrations
 
+## Contributors
+
+ * [James Ritchie](github.com/JamesRitchie)
+ * [fcasas](github.com/fcasas)
+
 ## Changelog
 
  * 0.1.4
