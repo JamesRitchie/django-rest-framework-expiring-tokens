@@ -10,7 +10,7 @@ import rest_framework_expiring_authtoken
 version = rest_framework_expiring_authtoken.__version__
 
 if sys.argv[-1] == 'publish':
-    if os.system("pip freeze | grep wheel"):
+    if os.system("pip list | grep wheel"):
         print("wheel not installed.\nUse `pip install wheel`.\nExiting.")
         sys.exit()
     if os.system("pip freeze | grep twine"):
