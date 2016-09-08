@@ -93,8 +93,8 @@ The `obtain_expiring_auth_token` view works exactly the same as the `obtain_auth
 
 ## Contributors
 
- * [James Ritchie](github.com/JamesRitchie)
- * [fcasas](github.com/fcasas)
+ * [James Ritchie](https://github.com/JamesRitchie)
+ * [fcasas](https://github.com/fcasas)
 
 ## Changelog
 
