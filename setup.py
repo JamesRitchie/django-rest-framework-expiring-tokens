@@ -24,14 +24,14 @@ if sys.argv[-1] == 'publish':
     sys.exit()
 
 setup(
-    name='djangorestframework-expiring-authtoken',
+    name='djangorest-expiring-authtoken',
     version=version,
     description='Expiring Authentication Tokens for Django REST Framework',
     url=(
-        'https://github.com/JamesRitchie/django-rest-framework-expiring-tokens'
+        'https://github.com/karuso/django-rest-framework-expiring-tokens'
     ),
-    author='James Ritchie',
-    author_email='james.a.ritchie@gmail.com',
+    author='Alessandro Caruso, Simone Cingano, James Ritchie',
+    author_email='a.caruso@superbatlc.com',
     license='BSD',
     packages=find_packages(exclude=['tests*']),
     install_requires=[

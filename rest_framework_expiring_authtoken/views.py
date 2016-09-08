@@ -3,6 +3,7 @@
 Classes:
     ObtainExpiringAuthToken: View to provide tokens to clients.
 """
+import datetime
 from rest_framework.authtoken.serializers import AuthTokenSerializer
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.response import Response
@@ -32,7 +33,9 @@ class ObtainExpiringAuthToken(ObtainAuthToken):
                 token = ExpiringToken.objects.create(
                     user=serializer.validated_data['user']
                 )
-
+            else:
+                token.created = datetime.datetime.utcnow()
+                token.save()
             data = {'token': token.key}
             return Response(data)
 

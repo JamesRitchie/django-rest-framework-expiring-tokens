@@ -3,7 +3,7 @@
 Classes:
     ExpiringTokenAuthentication: Authentication using extended authtoken model.
 """
-
+import datetime
 from rest_framework import exceptions
 from rest_framework.authentication import TokenAuthentication
 
@@ -33,4 +33,8 @@ class ExpiringTokenAuthentication(TokenAuthentication):
         if token.expired():
             raise exceptions.AuthenticationFailed('Token has expired')
 
+        utc_now = datetime.datetime.utcnow()
+        if token.created < utc_now - datetime.timedelta(hours=1):
+            token.created = utc_now
+            token.save()
         return (token.user, token)
