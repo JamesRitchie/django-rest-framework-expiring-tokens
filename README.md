@@ -91,9 +91,16 @@ The `obtain_expiring_auth_token` view works exactly the same as the `obtain_auth
  * Possibly change `obtain_expiring_auth_token` to always replace an existing token. (Configurable?)
  * South Migrations
 
+## Contributors
+
+ * [James Ritchie](https://github.com/JamesRitchie)
+ * [fcasas](https://github.com/fcasas)
+
 ## Changelog
 
-
+ * 0.1.4
+  * Fixed a typo causing an incorrect 500 error response with an invalid token.
+  * Support Django 1.10 and Django Rest Framework 3.4
  * 0.1.3
   * Set a default token lifespan of 30 days.
  * 0.1.2
