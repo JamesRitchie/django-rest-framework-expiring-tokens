@@ -18,12 +18,12 @@ class ExpiringTokenAuthentication(TokenAuthentication):
     Based on http://stackoverflow.com/questions/14567586/
     """
 
-    models = ExpiringToken
+    model = ExpiringToken
 
     def authenticate_credentials(self, key):
         """Attempt token authentication using the provided key."""
         try:
-            token = self.models.objects.get(key=key)
+            token = self.model.objects.get(key=key)
         except self.model.DoesNotExist:
             raise exceptions.AuthenticationFailed('Invalid token')
 
