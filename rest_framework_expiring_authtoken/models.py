@@ -24,3 +24,12 @@ class ExpiringToken(Token):
         if self.created < now - token_settings.EXPIRING_TOKEN_LIFESPAN:
             return True
         return False
+
+    def expiration_set(self):
+        """Return boolean indicating if EXPIRING_TOKEN_LIFESPAN has been set in projects setting.py file"""
+        try:
+            if settings.EXPIRING_TOKEN_LIFESPAN:
+                return True
+            return False
+        except AttributeError:
+            return False
