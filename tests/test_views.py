@@ -1,5 +1,6 @@
 """Tests for Django Rest Framework Session Authentication package."""
 from datetime import timedelta
+from django.utils import timezone
 from time import sleep
 
 from django.contrib.auth.models import User
@@ -114,3 +115,24 @@ class ObtainExpiringTokenViewTestCase(APITestCase):
         self.assertEqual(token.user, self.user)
         self.assertEqual(response.data['token'], token.key)
         self.assertTrue(key_1 != key_2)
+	
+    def test_post_slide_token_expiration(self):
+        """Check if token expiration slides i.e. change create time to make it appear new."""
+        
+        ExpiringToken.objects.create(user=self.user, created=timezone.now())
+        token_1 = ExpiringToken.objects.first()
+        key_1 = token_1.key
+        created_1 = token_1.created
+
+        #Attempt to make the first token expire but adjust slide window to prevent generation of new token.
+        with self.settings(EXPIRING_TOKEN_SLIDE_WINDOW=timedelta(seconds=1), EXPIRING_TOKEN_LIFESPAN=timedelta(milliseconds=1)):
+            sleep(0.001)
+            response = self.client.post('/obtain-token/', {'username': self.username,'password': self.password})
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        token_2 = ExpiringToken.objects.first()
+        
+        #User should use the same token but create times should differ
+        self.assertEqual(token_2.user, self.user)	
+        self.assertEqual(key_1, token_2.key)
+        self.assertTrue(created_1 != token_2.created)

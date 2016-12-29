@@ -41,5 +41,5 @@ class ExpiringTokenTestCase(TestCase):
         """Check the expired method return true for an outdated token."""
         # Crude, but necessary as auto_now_add field can't be changed.
         with self.settings(EXPIRING_TOKEN_LIFESPAN=timedelta(milliseconds=1)):
-            sleep(0.001)
+            sleep(0.003)
             self.assertTrue(self.token.expired())
