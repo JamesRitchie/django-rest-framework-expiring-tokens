@@ -26,4 +26,18 @@ class TokenSettings(object):
 
         return val
 
+    @property
+    def EXPIRING_TOKEN_SLIDE_WINDOW(self):
+        """
+        Returns the time window for sliding a token's expiration.
+        Defaults to 0 milliseconds i.e. no sliding enabled.
+        """
+		
+        try:
+            val = settings.EXPIRING_TOKEN_SLIDE_WINDOW
+        except AttributeError:
+            val = timedelta(milliseconds=0)
+
+        return val
+
 token_settings = TokenSettings()
