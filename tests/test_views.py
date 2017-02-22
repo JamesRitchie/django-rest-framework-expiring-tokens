@@ -114,3 +114,28 @@ class ObtainExpiringTokenViewTestCase(APITestCase):
         self.assertEqual(token.user, self.user)
         self.assertEqual(response.data['token'], token.key)
         self.assertTrue(key_1 != key_2)
+
+    def test_post_always_reset_token(self):
+        """Check that expired tokens are replaced."""
+        token = ExpiringToken.objects.create(user=self.user)
+        key_1 = token.key
+
+        # Make the first token expire.
+        with self.settings(ALWAYS_RESET_TOKEN=True):
+            sleep(0.001)
+            response = self.client.post(
+                '/obtain-token/',
+                {
+                    'username': self.username,
+                    'password': self.password
+                }
+            )
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        # Check token was renewed and the response contains the token key.
+        token = ExpiringToken.objects.first()
+        key_2 = token.key
+        self.assertEqual(token.user, self.user)
+        self.assertEqual(response.data['token'], token.key)
+        self.assertTrue(key_1 != key_2)

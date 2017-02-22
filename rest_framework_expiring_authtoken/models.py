@@ -21,6 +21,6 @@ class ExpiringToken(Token):
     def expired(self):
         """Return boolean indicating token expiration."""
         now = timezone.now()
-        if self.created < now - token_settings.EXPIRING_TOKEN_LIFESPAN:
+        if (self.created < now - token_settings.EXPIRING_TOKEN_LIFESPAN) or token_settings.ALWAYS_RESET_TOKEN:
             return True
         return False

@@ -76,3 +76,15 @@ class ExpiringTokenAuthenticationTestCase(TestCase):
                 self.assertEqual(e.__str__(), 'Token has expired')
             else:
                 self.fail("AuthenticationFailed not raised.")
+
+    def test_always_reset_token(self):
+        """Check that token always expires."""
+        with self.settings(ALWAYS_RESET_TOKEN=True):
+            sleep(0.001)
+
+            try:
+                self.test_instance.authenticate_credentials(self.key)
+            except AuthenticationFailed as e:
+                self.assertEqual(e.__str__(), 'Token has expired')
+            else:
+                self.fail("AuthenticationFailed not raised.")
