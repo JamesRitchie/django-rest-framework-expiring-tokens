@@ -54,9 +54,13 @@ Specify the desired lifespan of a token with `EXPIRING_TOKEN_LIFESPAN` in
 [timedelta object](https://docs.python.org/2/library/datetime.html#timedelta-objects).
 If not set, the default is 30 days.
 
+Also there is a field called `ALWAYS_RESET_TOKEN`, which allows token to be reset everytime this is checked.
+If not set, default is False
+
 ```python
 import datetime
 EXPIRING_TOKEN_LIFESPAN = datetime.timedelta(days=25)
+ALWAYS_RESET_TOKEN = True
 ```
 
 [Set the authentication scheme](http://www.django-rest-framework.org/api-guide/authentication/#setting-the-authentication-scheme) to `rest_framework_expiring_authtoken.authentication.ExpiringTokenAuthentication`
