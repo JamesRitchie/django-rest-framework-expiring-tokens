@@ -22,7 +22,7 @@ matrix:
   fast_finish: true
 
 install:
-  - pip install Django==$DJANGO_VERSION djangorestframework==3.4.6
+  - pip install Django==$DJANGO_VERSION djangorestframework==3.5.4
   - pip install coverage==3.7.1
   - pip install coveralls
 script:
