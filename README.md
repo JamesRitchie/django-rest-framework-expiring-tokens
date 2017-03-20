@@ -55,8 +55,8 @@ Specify the desired lifespan of a token with `EXPIRING_TOKEN_LIFESPAN` in
 If not set, the default is 30 days.
 
 ```python
-import datetime
-EXPIRING_TOKEN_LIFESPAN = datetime.timedelta(days=25)
+# number of days
+EXPIRING_TOKEN_LIFESPAN = 25
 ```
 
 [Set the authentication scheme](http://www.django-rest-framework.org/api-guide/authentication/#setting-the-authentication-scheme) to `rest_framework_expiring_authtoken.authentication.ExpiringTokenAuthentication`
