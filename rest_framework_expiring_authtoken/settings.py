@@ -20,7 +20,7 @@ class TokenSettings(object):
         Defaults to 30 days.
         """
         try:
-            val = settings.EXPIRING_TOKEN_LIFESPAN
+            val = timedelta(days=settings.EXPIRING_TOKEN_LIFESPAN)
         except AttributeError:
             val = timedelta(days=30)
 
