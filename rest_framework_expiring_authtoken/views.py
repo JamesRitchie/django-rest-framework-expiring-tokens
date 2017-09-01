@@ -22,14 +22,14 @@ class ObtainExpiringAuthToken(ObtainAuthToken):
         serializer = AuthTokenSerializer(data=request.data)
 
         if serializer.is_valid():
-            token, _ = ExpiringToken.objects.get_or_create(
+            token, _ = self.model.objects.get_or_create(
                 user=serializer.validated_data['user']
             )
 
             if token.expired():
                 # If the token is expired, generate a new one.
                 token.delete()
-                token = ExpiringToken.objects.create(
+                token = self.model.objects.create(
                     user=serializer.validated_data['user']
                 )
 
