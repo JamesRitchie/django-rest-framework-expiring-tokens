@@ -18,12 +18,11 @@ class ExpiringTokenAuthenticationTestCase(TestCase):
 
     def setUp(self):
         """Create a user and associated token."""
-        self.username = 'test'
         self.email = 'test@test.com'
         self.password = 'test'
         self.user = User.objects.create_user(
-            username=self.username,
             email=self.email,
+            username=self.email,
             password=self.password
         )
 
