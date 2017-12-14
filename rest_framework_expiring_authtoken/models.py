@@ -10,7 +10,6 @@ from rest_framework.authtoken.models import Token
 
 from rest_framework_expiring_authtoken.settings import token_settings
 
-
 class ExpiringToken(Token):
 
     """Extend Token to add an expired method."""

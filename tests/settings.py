@@ -23,6 +23,8 @@ INSTALLED_APPS = [
     "tests",
 ]
 
+AUTHENTICATION_BACKENDS = ( 'tests.backends.CustomAuthenticationBackend', )
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',

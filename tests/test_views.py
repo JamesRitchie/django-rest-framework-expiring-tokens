@@ -16,13 +16,12 @@ class ObtainExpiringTokenViewTestCase(APITestCase):
 
     def setUp(self):
         """Create a user."""
-        self.username = 'test'
         self.email = 'test@test.com'
         self.password = 'test'
         self.user = User.objects.create_user(
-            username=self.username,
+            username=self.email,
             email=self.email,
-            password=self.password
+            password=self.password,
         )
 
     def test_post(self):
@@ -32,22 +31,24 @@ class ObtainExpiringTokenViewTestCase(APITestCase):
         response = self.client.post(
             '/obtain-token/',
             {
-                'username': self.username,
+                'email': self.email,
                 'password': self.password
             }
         )
 
+        #import pdb;pdb.set_trace()
+
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         # Check the response contains the token key.
-        self.assertEqual(token.key, response.data['token'])
+        self.assertEqual(token.key, response.data['auth_token'])
 
     def test_post_create_token(self):
         """Check token is created if none exists."""
         response = self.client.post(
             '/obtain-token/',
             {
-                'username': self.username,
+                'email': self.email,
                 'password': self.password
             }
         )
@@ -57,7 +58,7 @@ class ObtainExpiringTokenViewTestCase(APITestCase):
         # Check token was created and the response contains the token key.
         token = ExpiringToken.objects.first()
         self.assertEqual(token.user, self.user)
-        self.assertEqual(response.data['token'], token.key)
+        self.assertEqual(response.data['auth_token'], token.key)
 
     def test_post_no_credentials(self):
         """Check POST request with no credentials fails."""
@@ -66,7 +67,7 @@ class ObtainExpiringTokenViewTestCase(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         self.assertEqual(response.data,
             {
-                'username': ['This field is required.'],
+                'email': ['This field is required.'],
                 'password': ['This field is required.']
             }
         )
@@ -76,7 +77,7 @@ class ObtainExpiringTokenViewTestCase(APITestCase):
         response = self.client.post(
             '/obtain-token/',
             {
-                'username': self.username,
+                'email': self.email,
                 'password': 'wrong'
             }
         )
@@ -101,7 +102,7 @@ class ObtainExpiringTokenViewTestCase(APITestCase):
             response = self.client.post(
                 '/obtain-token/',
                 {
-                    'username': self.username,
+                    'email': self.email,
                     'password': self.password
                 }
             )
@@ -112,5 +113,5 @@ class ObtainExpiringTokenViewTestCase(APITestCase):
         token = ExpiringToken.objects.first()
         key_2 = token.key
         self.assertEqual(token.user, self.user)
-        self.assertEqual(response.data['token'], token.key)
+        self.assertEqual(response.data['auth_token'], token.key)
         self.assertTrue(key_1 != key_2)
