@@ -21,7 +21,7 @@ class ObtainExpiringAuthToken(ObtainAuthToken):
         """Respond to POSTed username/password with token."""
         serializer = AuthTokenSerializer(data=request.data)
 
-        if serializer.is_valid():
+        if serializer.is_valid(raise_exception=True):
             token, _ = ExpiringToken.objects.get_or_create(
                 user=serializer.validated_data['user']
             )
@@ -35,7 +35,5 @@ class ObtainExpiringAuthToken(ObtainAuthToken):
 
             data = {'token': token.key}
             return Response(data)
-
-        return Response(serializer.errors, status=HTTP_400_BAD_REQUEST)
 
 obtain_expiring_auth_token = ObtainExpiringAuthToken.as_view()
