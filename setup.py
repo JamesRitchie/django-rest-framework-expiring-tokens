@@ -35,7 +35,7 @@ setup(
     license='BSD',
     packages=find_packages(exclude=['tests*']),
     install_requires=[
-        'djangorestframework>=3.9,<3.10'
+        'djangorestframework>=3.10,<3.11'
     ],
     test_suite='runtests.run',
     tests_require=[
