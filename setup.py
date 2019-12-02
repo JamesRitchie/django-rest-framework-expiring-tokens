@@ -39,7 +39,7 @@ setup(
     ],
     test_suite='runtests.run',
     tests_require=[
-        'Django>=2.2,<2.3'
+        'Django>=3.0,<3.1'
     ],
     zip_safe=False,
     classifiers=[
