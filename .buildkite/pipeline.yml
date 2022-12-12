@@ -2,7 +2,7 @@ steps:
   - label: "[:python: 3.10] :django: {{matrix.django_version}} + DRF {{matrix.drf_version}}"
     command:
       - "pip install coverage django=={{matrix.django_version}} djangorestframework=={{matrix.drf_version}}"
-      - "/src/runtests.py"
+      - "cd /src && ./runtests.py"
     matrix:
       setup:
         django_version:
@@ -20,7 +20,7 @@ steps:
   - label: "[:python: 3.11] :django: {{matrix.django_version}} + DRF {{matrix.drf_version}}"
     command:
       - "pip install coverage django=={{matrix.django_version}} djangorestframework=={{matrix.drf_version}}"
-      - "/src/runtests.py"
+      - "cd /src && ./runtests.py"
     matrix:
       setup:
         django_version:
