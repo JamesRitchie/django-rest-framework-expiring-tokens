@@ -6,11 +6,11 @@ steps:
     matrix:
       setup:
         django_version:
-          - 3.2.15
-          - 4.1.4
+          - "3.2"
+          - "4.1"
         drf_version:
-          - 3.12.4
-          - 3.14.0
+          - "3.12"
+          - "3.14"
     plugins:
       - docker#v5.3.0:
           image: "python:3.10-slim-buster"
@@ -24,11 +24,11 @@ steps:
     matrix:
       setup:
         django_version:
-          - 3.2.15
-          - 4.1.4
+          - "3.2"
+          - "4.1"
         drf_version:
-          - 3.12.4
-          - 3.14.0
+          - "3.12"
+          - "3.14"
     plugins:
       - docker#v5.3.0:
           image: "python:3.11-slim-buster"
