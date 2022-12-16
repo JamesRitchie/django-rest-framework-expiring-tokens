@@ -92,6 +92,8 @@ The `obtain_expiring_auth_token` view works exactly the same as the `obtain_auth
 
 ## Changelog
 
+ * 0.1.5
+  * Add support for Django 4.1 and Django Rest Framework 3.14
  * 0.1.4
   * Fixed a typo causing an incorrect 500 error response with an invalid token.
   * Support Django 1.10 and Django Rest Framework 3.4
