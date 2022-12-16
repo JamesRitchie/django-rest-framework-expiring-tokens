@@ -1,0 +1,46 @@
+steps:
+  - label: "[:python: 3.10] :django: {{matrix.django_version}} + DRF {{matrix.drf_version}}"
+    command:
+      - "pip install coverage django=={{matrix.django_version}} djangorestframework=={{matrix.drf_version}}"
+      - "cd /src && ./runtests.py"
+    matrix:
+      setup:
+        django_version:
+          - "3.2"
+          - "4.1"
+        drf_version:
+          - "3.12"
+          - "3.14"
+      adjustments:
+        - with:
+            django_version: "4.1"
+            drf_version: "3.12"
+          skip: true
+    plugins:
+      - docker#v5.3.0:
+          image: "python:3.10-slim-buster"
+          volumes:
+            - ".:/src"
+
+  - label: "[:python: 3.11] :django: {{matrix.django_version}} + DRF {{matrix.drf_version}}"
+    command:
+      - "pip install coverage django=={{matrix.django_version}} djangorestframework=={{matrix.drf_version}}"
+      - "cd /src && ./runtests.py"
+    matrix:
+      setup:
+        django_version:
+          - "3.2"
+          - "4.1"
+        drf_version:
+          - "3.12"
+          - "3.14"
+      adjustments:
+        - with:
+            django_version: "4.1"
+            drf_version: "3.12"
+          skip: true
+    plugins:
+      - docker#v5.3.0:
+          image: "python:3.11-slim-buster"
+          volumes:
+            - ".:/src"

@@ -1,10 +1,6 @@
 # Expiring Tokens for Django Rest Framework
 
-[![Build Status](https://travis-ci.org/JamesRitchie/django-rest-framework-expiring-tokens.svg?branch=master)](https://travis-ci.org/JamesRitchie/django-rest-framework-expiring-tokens)
-[![Coverage Status](https://coveralls.io/repos/JamesRitchie/django-rest-framework-expiring-tokens/badge.svg)](https://coveralls.io/r/JamesRitchie/django-rest-framework-expiring-tokens)
-[![Code Health](https://landscape.io/github/JamesRitchie/django-rest-framework-expiring-tokens/master/landscape.svg?style=flat)](https://landscape.io/github/JamesRitchie/django-rest-framework-expiring-tokens/master)
-[![PyPI version](https://badge.fury.io/py/djangorestframework-expiring-authtoken.svg)](http://badge.fury.io/py/djangorestframework-expiring-authtoken)
-[![Requirements Status](https://requires.io/github/JamesRitchie/django-rest-framework-expiring-tokens/requirements.svg?branch=master)](https://requires.io/github/JamesRitchie/django-rest-framework-expiring-tokens/requirements/?branch=master)
+[![Build Status](https://badge.buildkite.com/2f6d6087b20fd72026290c3e3aba4634b38ad68d615eae1cf9.svg)](https://buildkite.com/mighty/django-rest-framework-expiring-tokens)
 
 This package provides a lightweight extension to the included token
 authentication in
@@ -22,9 +18,7 @@ This package was inspired by this
 
 ## Installation
 
-Expiring Tokens is tested against the latest versions of Django 1.6, 1.7 and
-the 1.8 preview release, and Django Rest Framework 3.1.1.
-It should in theory support Django 1.4.
+Expiring Tokens is tested against the latest versions of Django 3.2 and 4.1, and Django Rest Framework 3.12 and 3.14.
 
 Grab the package from PyPI.
 
@@ -79,7 +73,7 @@ app with migrations to also have migrations.
 python manage.py migrate
 ```
 
-## Usage
+## Usage
 
 Expiring Tokens works exactly the same as the default TokenAuth, except that using an expired token will return a response with an HTTP 400 status and a `Token has expired` error message.
 
@@ -96,7 +90,7 @@ The `obtain_expiring_auth_token` view works exactly the same as the `obtain_auth
  * [James Ritchie](https://github.com/JamesRitchie)
  * [fcasas](https://github.com/fcasas)
 
-## Changelog
+## Changelog
 
  * 0.1.4
   * Fixed a typo causing an incorrect 500 error response with an invalid token.

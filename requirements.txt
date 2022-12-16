@@ -1,0 +1,3 @@
+# these pins are used just for dependabot to provide update notifications
+django==3.2.15
+djangorestframework==3.12.4
