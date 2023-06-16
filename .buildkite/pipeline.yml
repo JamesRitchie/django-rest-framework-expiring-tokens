@@ -1,8 +1,13 @@
+env:
+  ECR_REGISTRY: "765337109446.dkr.ecr.us-east-1.amazonaws.com"
+
 steps:
   - label: "[:python: 3.10] :django: {{matrix.django_version}} + DRF {{matrix.drf_version}}"
     command:
       - "pip install coverage django=={{matrix.django_version}} djangorestframework=={{matrix.drf_version}}"
       - "cd /src && ./runtests.py"
+    agents:
+      queue: new-default  #FIXME
     matrix:
       setup:
         django_version:
@@ -26,6 +31,8 @@ steps:
     command:
       - "pip install coverage django=={{matrix.django_version}} djangorestframework=={{matrix.drf_version}}"
       - "cd /src && ./runtests.py"
+    agents:
+      queue: new-default  #FIXME
     matrix:
       setup:
         django_version:
